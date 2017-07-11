@@ -1,0 +1,19 @@
+export default [
+    'error',
+    'connect',
+    'disconnect',
+    'connectAbort',
+    'connecting',
+    'raw',
+    'kickOut',
+    'subscribe',
+    'subscribeFail',
+    'unsubscribe',
+    'authStateChange',
+    'authTokenChange',
+    'subscribeStateChange',
+    'subscribeRequest',
+    'authenticate',
+    'deauthenticate',
+    'message'
+]
