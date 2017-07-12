@@ -1,6 +1,7 @@
 import Connection from './connection'
 import Emitter from './emitter'
 import { normalizeConnectionClient, normalizeConnectionEvents } from './utils'
+import SocketComponent from './SocketComponent.vue'
 
 export default {
 
@@ -22,6 +23,9 @@ export default {
 
         options.connections.map((connection) => {
             Vue.prototype[`$${normalizeConnectionClient(connection)}`] = new Connection(connection).connection
+            let component = SocketComponent
+            component.__setSocketClientName__(`$${normalizeConnectionClient(connection)}`)
+            Vue.component(normalizeConnectionClient(connection), component)
         })
 
         Vue.mixin({
@@ -44,7 +48,6 @@ export default {
                         }
                     })
 
-
                     if(connectionHook) {
                         Object.keys(connectionHook).forEach((eventHook) => {
                             this.$options[connectionHook][eventHook] = connectionHook[eventHook];
@@ -64,5 +67,4 @@ export default {
             }
         })
     }
-
 }
