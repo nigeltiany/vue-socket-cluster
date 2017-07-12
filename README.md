@@ -57,7 +57,7 @@ var vm = new Vue({
 })
 ```
 
-```
+
 Remove existing listener on client
 ``` js
 delete this.$options.$echoClient.event_name;
