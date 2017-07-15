@@ -151,7 +151,7 @@ delete this.$options.$echoClient.event_name;
 </script>
 ```
 
-####subscriptions
+#### subscriptions
 
 ```html
 <template>
