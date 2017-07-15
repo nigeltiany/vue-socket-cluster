@@ -62,7 +62,7 @@ Remove existing listener on client
 ``` js
 delete this.$options.$echoClient.event_name;
 ```
-##Alternative Usage
+## Alternative Usage
 
 ```html
 <template>
@@ -82,7 +82,7 @@ delete this.$options.$echoClient.event_name;
   }
 </script>
 ```
-####default events
+#### default events
 
 ```html
 <template>
@@ -104,7 +104,7 @@ delete this.$options.$echoClient.event_name;
 </script>
 ```
 
-####sending data
+#### sending data
 
 ```html
 <template>
@@ -132,7 +132,7 @@ delete this.$options.$echoClient.event_name;
   }
 </script>
 ```
-####event data
+#### event data
 
 ```html
 <template>
