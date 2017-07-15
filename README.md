@@ -63,6 +63,7 @@ Remove existing listener on client
 delete this.$options.$echoClient.event_name;
 ```
 ##Alternative Usage
+
 ```html
 <template>
 <!--every connection gets a dynamic component
@@ -81,7 +82,8 @@ delete this.$options.$echoClient.event_name;
   }
 </script>
 ```
-###default events
+####default events
+
 ```html
 <template>
     <!-- bind documented events using :on['Event_name'] first letter being a capital letter -->
@@ -102,7 +104,8 @@ delete this.$options.$echoClient.event_name;
 </script>
 ```
 
-###sending data
+####sending data
+
 ```html
 <template>
     <!-- send data by changing the data property -->
@@ -129,7 +132,8 @@ delete this.$options.$echoClient.event_name;
   }
 </script>
 ```
-###event data
+####event data
+
 ```html
 <template>
     <!-- set the event attribute to the event name -->
@@ -147,7 +151,8 @@ delete this.$options.$echoClient.event_name;
 </script>
 ```
 
-###subscriptions
+####subscriptions
+
 ```html
 <template>
 
