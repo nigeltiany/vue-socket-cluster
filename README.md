@@ -62,5 +62,107 @@ Remove existing listener on client
 ``` js
 delete this.$options.$echoClient.event_name;
 ```
+##Alternative Usage
+```html
+<template>
+<!--every connection gets a dynamic component
+    use <[client-name]-client></[client-name]-client>
+    -->
+    <echo-client event="echo" :onData="receiveData"></echo-client>
+</template>
+<script>
+
+  export default {
+      methods: {
+          receiveData(data) {
+              console.log(data)
+          }
+      }
+  }
+</script>
+```
+###default events
+```html
+<template>
+    <!-- bind documented events using :on['Event_name'] first letter being a capital letter -->
+    <echo-client event="echo" :onConnect="connected" :onMessage="anyMessageData"></echo-client>
+</template>
+<script>
+
+  export default {
+      methods: {
+          connected(){
+              console.log('connected to echo socket server')
+          },
+          anyMessageData(data) {
+              console.log(data)
+          }
+      }
+  }
+</script>
+```
+
+###sending data
+```html
+<template>
+    <!-- send data by changing the data property -->
+    <echo-client :onConnect="connected" :data="message"></echo-client>
+    <input :value="message" :disabled="connected">
+</template>
+<script>
+
+  export default {
+      data() {
+          return {
+              connected: false,
+              message: null
+          }  
+      },
+      methods: {
+          connected(){
+              this.connected = true
+          },
+          anyMessageData(data) {
+              console.log(data)
+          }
+      }
+  }
+</script>
+```
+###event data
+```html
+<template>
+    <!-- set the event attribute to the event name -->
+    <echo-client event="eventName" :onData="eventData"></echo-client>
+</template>
+<script>
+
+  export default {
+      methods: {
+          eventData(data){
+             console.log(data)
+          }
+      }
+  }
+</script>
+```
+
+###subscriptions
+```html
+<template>
+
+    <!-- set the channel attribute to the channel name -->
+    <echo-client channel="channelName" :onData="channelData"></echo-client>
+</template>
+<script>
+  export default {
+      methods: {
+          channelData(data){
+             console.log(data)
+          }
+      }
+  }
+</script>
+```
 
 Based on works from [MetinSeylan/Vue-Socket.io](https://github.com/MetinSeylan/Vue-Socket.io) and its contributor
