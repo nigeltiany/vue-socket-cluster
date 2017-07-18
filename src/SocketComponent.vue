@@ -170,7 +170,7 @@
         },
         watch: {
             data () {
-                this.socket.emit((this.event || this.channel), JSON.stringify(this.data))
+                this.socket.emit((this.event || this.channel), this.data)
             }
         }
     }
