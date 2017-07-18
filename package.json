@@ -1,6 +1,6 @@
 {
   "name": "vue-socket-cluster",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Socket cluster vuejs wrapper",
   "main": "dist/build.js",
   "scripts": {
