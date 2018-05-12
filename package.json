@@ -1,6 +1,6 @@
 {
   "name": "vue-socket-cluster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Socket cluster vuejs wrapper",
   "main": "dist/build.js",
   "scripts": {
@@ -22,8 +22,8 @@
   ],
   "author": "Nigel Tiany",
   "license": "MIT",
-  "dependencies": {
-    "socketcluster-client": "^6.1.1"
+  "peerDependencies": {
+    "socketcluster-client": ">=6.1.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
