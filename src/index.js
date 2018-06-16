@@ -33,16 +33,17 @@ export default {
                 options.connections.map((connection) => {
                     Emitter.addEventSource(connection)
 
-                    let connectionHook = this.$options[normalizeConnectionEvents(connection)]
+                    let normalizedName = normalizeConnectionEvents(connection)
+                    let connectionHook = this.$options[normalizedName]
 
-                    this.$options[connectionHook] = new Proxy({}, {
+                    this.$options[normalizedName] = new Proxy({}, {
                         set: (target, key, value) => {
-                            Emitter.addEventHook(connection, key, value, this)
+                            Emitter.addListener(connection, key, value, this)
                             target[key] = value
                             return true;
                         },
                         deleteProperty: (target, key) => {
-                            Emitter.removeListener(connection, key, this.$options[connectionHook][key], this)
+                            Emitter.removeListener(connection, key, this.$options[normalizedName][key], this)
                             delete target.key;
                             return true
                         }
@@ -50,17 +51,19 @@ export default {
 
                     if(connectionHook) {
                         Object.keys(connectionHook).forEach((eventHook) => {
-                            this.$options[connectionHook][eventHook] = connectionHook[eventHook];
+                            this.$options[normalizedName][eventHook] = connectionHook[eventHook];
                         });
                     }
                 })
             },
             beforeDestroy(){
                 options.connections.map((connection) => {
-                    let connectionHook = this.$options[normalizeConnectionEvents(connection)]
+                    let nomalizedName = normalizeConnectionEvents(connection)
+                    let connectionHook = this.$options[nomalizedName]
+
                     if(connectionHook){
                         Object.keys(connectionHook).forEach((eventHook) => {
-                            delete this.$options[connectionHook][eventHook]
+                            delete this.$options[nomalizedName][eventHook]
                         });
                     }
                 })

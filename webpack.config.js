@@ -1,4 +1,6 @@
 var path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
     entry: ['./src/index.js'],
     output: {
@@ -9,12 +11,12 @@ module.exports = {
     },
     devtool: "source-map",
     plugins: [
+      new VueLoaderPlugin()
     ],
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.vue$/,
-                exclude: /node_modules/,
                 loader: 'vue-loader'
             },
             {
