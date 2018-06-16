@@ -110,7 +110,7 @@ delete this.$options.$echoClient.event_name;
 <template>
     <!-- send data by changing the data property -->
     <echo-client :onConnect="connected" :data="message"></echo-client>
-    <input :value="message" :disabled="connected">
+    <input :value="message" :disabled="!connected">
 </template>
 <script>
 
